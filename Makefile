@@ -6,7 +6,7 @@
 #    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/02/17 14:27:43 by jralph           ###   ########.fr        #
+#    Updated: 2023/02/17 14:55:48 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS_OBJ = -Wall -Wextra -Werror -c
 
 RM = rm -f
 
-C_FILES =	main.c
+C_FILES =	main.c \
+			error.c
 
 SRC = $(addprefix src/, $(C_FILES))
 
