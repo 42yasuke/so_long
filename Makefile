@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/02/14 18:50:53 by jose             ###   ########.fr        #
+#    Updated: 2023/02/17 14:27:43 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,25 +28,31 @@ INC = -I includes/
 
 LIB = -L. -lft
 
+MLBX = libmlx.a -Iinclude -ldl -lglfw -pthread -lm -lmlx -lXext -lX11
+
 NAME = so_long
 
 all : $(NAME)
 
 libft.a :
 			make bonus -C libft
+			
+libmlx.a :
+			make -C mlx42
 
 %.o : %.c
-			$(CC) $(CFLAGS_OBJ) -Imlx_linux -O3 $< -o $@ $(LIB) $(INC)
+			$(CC) $(CFLAGS_OBJ) $< -o $@ $(LIB) $(MLBX) $(INC)
 
-$(NAME) : libft.a $(OBJ)
-			$(CC) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $(OBJ) -o $@ $(LIB)
+$(NAME) : libft.a libmlx.a $(OBJ)
+			$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIB) $(MLBX)
 
 clean :
 		make clean -C libft
+		make clean -C mlx42
 		$(RM) src/*.o
 
 fclean : clean
-		$(RM) $(NAME) libft.a
+		$(RM) $(NAME) libft.a libmlx.a
 
 re : fclean all
 
