@@ -20,7 +20,22 @@
 # include <errno.h>
 # include <string.h>
 
+# define WINDOW_WIDTH 640
+# define WINDOW_HEIGHT 480
+
 # define BAD_INIT 1
+# define MALLOC_FAILED 2
+
+typedef struct	s_image
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		width;
+	int		height;
+}	t_image;
 
 /*	error.c	*/
 void	ft_error(int err, char *err_msg);

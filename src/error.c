@@ -16,5 +16,7 @@ void	ft_error(int err, char *err_msg)
 {
 	if (err == BAD_INIT)
 		ft_printf("%s: %s\n", err_msg, strerror(errno));
+	if (err == MALLOC_FAILED)
+		ft_printf("%s: %s\n", err_msg, strerror(errno));
 	exit(EXIT_FAILURE);
 }
