@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/02/23 18:54:13 by jose             ###   ########.fr       */
+/*   Updated: 2023/02/23 20:43:21 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 /*	error's macro*/
 # define BAD_INIT 1
 # define MALLOC_FAILED 2
+# define MLX_INIT_FAILED 3
+# define MLX_WIN_FAILED 4
 
 /*	image's macro	*/
 # define BACKGROUND 0
@@ -49,6 +51,7 @@ typedef struct	s_image
 	int		endian;
 	int		width;
 	int		height;
+	int		id;
 }	t_image;
 
 typedef struct	s_data_image
@@ -67,5 +70,16 @@ typedef struct	s_win
 
 /*	error.c	*/
 void	ft_error(int err, char *err_msg);
+
+/*	events.c	*/
+int		ft_close_win(int keycode, t_win *window);
+int		handle_no_event(void *img_space);
+
+/*	utils.c	*/
+void	*ft_initial_window(void);
+
+/*	free.c	*/
+void	ft_free_all_image(void *mlx, t_data_img *lst);
+void	ft_free_window(t_win *window);
 
 #endif
