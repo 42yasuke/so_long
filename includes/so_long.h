@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/02/23 18:18:40 by jose             ###   ########.fr       */
+/*   Updated: 2023/02/23 18:54:13 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,18 @@ typedef struct	s_image
 	int		height;
 }	t_image;
 
+typedef struct	s_data_image
+{
+	struct s_image		*img;
+	struct s_data_image	*next;
+}	t_data_img;
+
+
 typedef struct	s_win
 {
-	void	*mlx;
-	void	*mlx_win;
+	void		*mlx;
+	void		*mlx_win;
+	t_data_img	*lst;
 }	t_win;
 
 /*	error.c	*/
