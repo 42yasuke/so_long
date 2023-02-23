@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:17:16 by jose              #+#    #+#             */
-/*   Updated: 2023/02/23 20:35:58 by jose             ###   ########.fr       */
+/*   Updated: 2023/02/23 21:43:26 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ int	main(void)
 	t_image	img_space;
 
 	win = ft_initial_window();
-	win->mlx = mlx_init();
-	if (!win->mlx)
-		(ft_error(MLX_INIT_FAILED, "mlx_init"));
-	win->mlx_win = mlx_new_window(win->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "SO_LONG");
-	if (!win->mlx_win)
-		(ft_free_window(win), ft_error(MLX_WIN_FAILED, "mlx_win"));
 
 	
 	img_space.img = mlx_xpm_file_to_image(win.mlx, "/home/jose/C/so_long/image/space.xpm", &img_space.width, &img_space.height);
