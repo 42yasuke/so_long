@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/02/24 12:35:34 by jose             ###   ########.fr       */
+/*   Updated: 2023/02/24 14:53:54 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
+# define KEY_Z -1
+# define KEY_Q -1
+# define KEY_D -1
+# define KEY_S -1
+
+/*	mouse's macro	*/
+# define CROSS_BUTTON 1840902816
 
 /*	error's macro*/
 # define BAD_INIT 1
@@ -72,8 +79,9 @@ typedef struct	s_win
 void	ft_error(int err, char *err_msg);
 
 /*	events.c	*/
-int		ft_close_win(int keycode, t_win *window);
+int	ft_close_win(t_win *window);
 int		handle_no_event(void *win);
+int		ft_event_manager(int keycode, t_win *window);
 
 /*	utils.c	*/
 void	*ft_initial_window(void);
