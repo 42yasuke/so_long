@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:17:16 by jose              #+#    #+#             */
-/*   Updated: 2023/02/23 21:43:26 by jose             ###   ########.fr       */
+/*   Updated: 2023/02/24 11:13:10 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,9 @@ int	main(void)
 
 	win = ft_initial_window();
 
-	
-	img_space.img = mlx_xpm_file_to_image(win.mlx, "/home/jose/C/so_long/image/space.xpm", &img_space.width, &img_space.height);
-	img_space.addr = mlx_get_data_addr(img_space.img, &img_space.bpp, &img_space.size_line, &img_space.endian);
-	mlx_put_image_to_window(win.mlx, win.mlx_win, img_space.img, 0, 0);
-	mlx_loop_hook(win.mlx, &handle_no_event, &img_space);
-	mlx_hook(win.mlx_win, 2, 1L<<0, &ft_close_win, &win);
-	mlx_loop(win.mlx);
-	mlx_destroy_image(win.mlx, img_space.img);
+	mlx_put_image_to_window(win->mlx, win->mlx_win, win->lst->img->img, 0, 0);
+	mlx_loop_hook(win->mlx, &handle_no_event, &win->lst->img->img);
+	mlx_hook(win->mlx_win, 2, 1L<<0, &ft_close_win, &win);
+	mlx_loop(win->mlx);
 	return (0);
 }
