@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:14:51 by jose              #+#    #+#             */
-/*   Updated: 2023/02/24 11:08:00 by jose             ###   ########.fr       */
+/*   Updated: 2023/02/24 12:04:41 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_remove_image(void)
 	return ;
 }
 
-void	ft_add_image(t_win *win, char *path int id)
+void	ft_add_image(t_win *win, char *path, int id)
 {
 	t_data_img *tmp;
 
@@ -44,11 +44,11 @@ void	ft_add_all_image(t_win *win)
 		win->lst = malloc(sizeof(*(win->lst)));
 		if (!win->lst)
 			(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc_failed"));
-		wins->lst->next = NULL;
+		win->lst->next = NULL;
 		win->lst->img = malloc(sizeof(*(win->lst->img)));
 		if (!win->lst->img)
 			(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc_failed"));
-		win->lst->img->img = mlx_xpm_file_to_image(win->mlx, "../image/space.xpm", &win->lst->img->width, &win->lst->img->height);
+		win->lst->img->img = mlx_xpm_file_to_image(win->mlx, "/home/jose/C/so_long/image/space.xpm", &win->lst->img->width, &win->lst->img->height);
 		win->lst->img->addr = mlx_get_data_addr(win->lst->img->img, &win->lst->img->bpp, &win->lst->img->size_line, &win->lst->img->endian);
 		win->lst->img->id = BACKGROUND;
 	}

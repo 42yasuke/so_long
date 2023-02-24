@@ -3,23 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
+#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/02/17 14:55:48 by jralph           ###   ########.fr        #
+#    Updated: 2023/02/24 11:18:00 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-CFLAGS_OBJ = -Wall -Wextra -Werror -c
+CFLAGS_OBJ = -Wall -Wextra -Werror -c -g
 
 RM = rm -f
 
 C_FILES =	main.c \
-			error.c
+			error.c \
+			events.c \
+			utils.c \
+			free.c
 
 SRC = $(addprefix src/, $(C_FILES))
 
