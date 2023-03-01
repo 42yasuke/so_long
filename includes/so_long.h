@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/02/24 14:53:54 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/01 03:41:11 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <string.h>
+# include <stdbool.h>
 
 /*	window's macro	*/
 # define WINDOW_WIDTH 1431
@@ -40,6 +41,8 @@
 # define MALLOC_FAILED 2
 # define MLX_INIT_FAILED 3
 # define MLX_WIN_FAILED 4
+# define OPEN_FAILED 5
+# define MAP_NOT_VALID 6
 
 /*	image's macro	*/
 # define BACKGROUND 0
@@ -82,6 +85,7 @@ void	ft_error(int err, char *err_msg);
 int	ft_close_win(t_win *window);
 int		handle_no_event(void *win);
 int		ft_event_manager(int keycode, t_win *window);
+int		ft_event_manager2(int keycode, t_win *win);
 
 /*	utils.c	*/
 void	*ft_initial_window(void);
@@ -89,5 +93,20 @@ void	*ft_initial_window(void);
 /*	free.c	*/
 void	ft_free_all_image(void *mlx, t_data_img *lst);
 void	ft_free_window(t_win *window);
+void	ft_free_all_str(char **map);
+
+/*	maps.c	*/
+char	**ft_valide_map(int fd);
+
+/*	maps_utils.c	*/
+char	**ft_valide_map2(int fd);
+int		ft_nbr_str(char **map);
+int		ft_nbr_item(char **map);
+int		ft_begin_pos(char **map);
+int		ft_nbr_move_max(char **map);
+
+/*	maps_utils2.c	*/
+int		ft_move(int *pos, int *nbr_try, char **map);
+void	ft_move_back(int *pos, int *nbr_try);
 
 #endif
