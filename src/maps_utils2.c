@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:35:42 by jose              #+#    #+#             */
-/*   Updated: 2023/03/05 03:19:01 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 12:56:14 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static int	ft_make_move(char **map_cpy, int i, int j)
 	int	res;
 
 	res = 0;
-	if (map_cpy[i - 1][j] == '0')
+	if (map_cpy[i - 1][j] != '1' && map_cpy[i - 1][j] != '2')
 		(res = 1, map_cpy[i - 1][j] = '2');
-	if (map_cpy[i][j + 1] == '0')
+	if (map_cpy[i][j + 1] != '1' && map_cpy[i][j + 1] != '2')
 		(res = 1, map_cpy[i][j + 1] = '2');
-	if (map_cpy[i + 1][j] == '0')
+	if (map_cpy[i + 1][j] != '1' && map_cpy[i + 1][j] != '2')
 		(res = 1, map_cpy[i + 1][j] = '2');
-	if (map_cpy[i][j - 1] == '0')
+	if (map_cpy[i][j - 1] != '1' && map_cpy[i][j - 1] != '2')
 		(res = 1, map_cpy[i][j - 1] = '2');
 	return (res);
 }
@@ -41,8 +41,8 @@ static void	ft_all_possible_move(char **map_cpy)
 		moved = 0;
 		while (map_cpy[i][j])
 		{
-			if (map_cpy[i][j] == '2')
-				moved = ft_make_move(map_cpy, i, j);
+			if (map_cpy[i][j] == '2' && ft_make_move(map_cpy, i, j))
+				moved = 1;
 			j++;
 		}
 		if(moved)

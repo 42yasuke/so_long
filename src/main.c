@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:17:16 by jose              #+#    #+#             */
-/*   Updated: 2023/02/28 23:42:40 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 15:00:06 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ int	main(void)
 		(ft_free_window(win), ft_error(MAP_NOT_VALID, "map not valid"));
 
 	mlx_put_image_to_window(win->mlx, win->mlx_win, win->lst->img->img, 0, 0);
-	mlx_loop_hook(win->mlx, &handle_no_event, win);
 	mlx_hook(win->mlx_win, KeyPress, KeyPressMask, &ft_event_manager, win);
-	mlx_hook(win->mlx_win, DestroyNotify, StructureNotifyMask, &ft_close_win, win);
+	mlx_hook(win->mlx_win, ClientMessage, StructureNotifyMask, &ft_close_win, win);
 
 	mlx_loop(win->mlx);
 	mlx_destroy_display(win->mlx);
-	free(win->mlx);
-	free(win);
-	return (0);
+	(free(win->mlx), free(win), ft_free_all_str(map), close(fd));
+	return (EXIT_SUCCESS);
 }

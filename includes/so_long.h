@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/05 03:05:16 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 14:53:07 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,7 @@ void	ft_error(int err, char *err_msg);
 
 /*	events.c	*/
 int	ft_close_win(t_win *window);
-int		handle_no_event(void *win);
 int		ft_event_manager(int keycode, t_win *window);
-int		ft_event_manager2(int keycode, t_win *win);
 
 /*	utils.c	*/
 void	*ft_initial_window(void);

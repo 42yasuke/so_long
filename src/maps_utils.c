@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:23:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/05 03:14:01 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 13:05:50 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ char	**ft_copy_map(char **map)
 	while (map[i])
 	{
 		j = 0;
-		map_cpy[i] = malloc(sizeof(**map) * (ft_strlen(map[i] + 1)));
+		map_cpy[i] = malloc(sizeof(**map) * (ft_strlen(map[i]) + 1));
 		if (!map_cpy[i])
-			return (free(map_cpy), NULL);
+			return (ft_free_all_str(map_cpy), NULL);
 		while(map[i][j])
 		{
 			map_cpy[i][j] = map[i][j];

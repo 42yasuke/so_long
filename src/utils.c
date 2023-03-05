@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:14:51 by jose              #+#    #+#             */
-/*   Updated: 2023/02/24 12:04:41 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 13:13:33 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	*ft_initial_window(void)
 	win->mlx_win = mlx_new_window(win->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "SO_LONG");
 	if (!win->mlx_win)
 		(ft_free_window(win), ft_error(MLX_WIN_FAILED, "mlx_win"));
+	win->lst = NULL;
 	ft_add_all_image(win);
 	return (win);
 }

@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:04:39 by jose              #+#    #+#             */
-/*   Updated: 2023/03/05 02:49:35 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 12:56:52 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ char	**ft_valide_map(int fd)
 		return (NULL);
 	if (ft_is_rectangle(map) && ft_is_closed(map) && \
 	ft_valide_item(map) && ft_valide_path(map))
-		return (ft_printf("c une bonne map"), map);
+		return (map);
 	return (ft_free_all_str(map), NULL);
 }

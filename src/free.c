@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:38:33 by jose              #+#    #+#             */
-/*   Updated: 2023/02/28 21:19:44 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 14:55:02 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_free_window(t_win *window)
 		return ;
 	ft_free_all_image(window->mlx, window->lst);
 	mlx_destroy_window(window->mlx, window->mlx_win);
+	mlx_loop_end(window->mlx);
 }
 
 void	ft_free_all_str(char **map)
