@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:23:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/01 01:02:03 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 03:14:01 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,30 @@ int	ft_begin_pos(char **map)
 	return (-1);
 }
 
-int	ft_nbr_move_max(char **map)
+char	**ft_copy_map(char **map)
 {
-	return (2 * (ft_nbr_str(map) - 2) * (ft_strlen(map[0]) - 2));
+	char	**map_cpy;
+	int		i;
+	int		j;
+
+	i = 0;
+	map_cpy = malloc(sizeof(*map) * (ft_nbr_str(map) + 1));
+	if (!map_cpy)
+		return (NULL);
+	while (map[i])
+	{
+		j = 0;
+		map_cpy[i] = malloc(sizeof(**map) * (ft_strlen(map[i] + 1)));
+		if (!map_cpy[i])
+			return (free(map_cpy), NULL);
+		while(map[i][j])
+		{
+			map_cpy[i][j] = map[i][j];
+			j++;
+		}
+		map_cpy[i][j] = '\0';
+		i++;
+	}
+	map_cpy[i] = NULL;
+	return (map_cpy);
 }

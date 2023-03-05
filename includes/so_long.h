@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/01 03:41:11 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 03:05:16 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ char	**ft_valide_map2(int fd);
 int		ft_nbr_str(char **map);
 int		ft_nbr_item(char **map);
 int		ft_begin_pos(char **map);
-int		ft_nbr_move_max(char **map);
+char	**ft_copy_map(char **map);
 
 /*	maps_utils2.c	*/
-int		ft_move(int *pos, int *nbr_try, char **map);
-void	ft_move_back(int *pos, int *nbr_try);
+void	ft_first_move(char **map_cpy);
+int		ft_is_all_item_collected(char **map, char **map_cpy);
 
 #endif

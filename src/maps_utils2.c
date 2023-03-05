@@ -6,80 +6,86 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:35:42 by jose              #+#    #+#             */
-/*   Updated: 2023/03/01 03:43:44 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/05 03:19:01 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	ft_move_next(int *pos, int *nbr_try, char **map)
+static int	ft_make_move(char **map_cpy, int i, int j)
 {
-	int	i;
-	int	j;
 	int	res;
 
-	i = *pos / 100;
-	j = *pos % 100;
 	res = 0;
-	if (*nbr_try == 2 && map[i + 1][j] != '1' && map[i + 1][j] != '2')
-	{
-		map[i][j] = '2';
-		i++;
-		res++;
-	}
-	else if (*nbr_try == 3 && map[i][j - 1] != '1' && map[i][j - 1] != '2')
-	{
-			map[i][j] = '2';
-			j--;
-			res++;
-	}
-	if (res)
-		*pos = i * 100 + j;
+	if (map_cpy[i - 1][j] == '0')
+		(res = 1, map_cpy[i - 1][j] = '2');
+	if (map_cpy[i][j + 1] == '0')
+		(res = 1, map_cpy[i][j + 1] = '2');
+	if (map_cpy[i + 1][j] == '0')
+		(res = 1, map_cpy[i + 1][j] = '2');
+	if (map_cpy[i][j - 1] == '0')
+		(res = 1, map_cpy[i][j - 1] = '2');
 	return (res);
 }
 
-int	ft_move(int *pos, int *nbr_try, char **map)
+static void	ft_all_possible_move(char **map_cpy)
 {
 	int	i;
 	int	j;
-	int	res;
+	int	moved;
 
-	i = *pos / 100;
-	j = *pos % 100;
-	res = 0;
-	if (*nbr_try == 0 && map[i - 1][j] != '1' && map[i - 1][j] != '2')
+	i = 0;
+	while (map_cpy[i])
 	{
-		map[i][j] = '2';
-		i--;
-		res++;
+		j = 0;
+		moved = 0;
+		while (map_cpy[i][j])
+		{
+			if (map_cpy[i][j] == '2')
+				moved = ft_make_move(map_cpy, i, j);
+			j++;
+		}
+		if(moved)
+			i = -1;
+		i++;
 	}
-	else if (*nbr_try == 1 && map[i][j + 1] != '1' && map[i][j + 1] != '2')
-	{
-		map[i][j] = '2';
-		j++;
-		res++;
-	}
-	if (!res)
-		res = ft_move_next(pos, nbr_try, map);
-	else
-		*pos = i * 100 + j;
-	return (res);
 }
 
-void	ft_move_back(int *pos, int *nbr_try)
+void	ft_first_move(char **map_cpy)
 {
 	int	i;
 	int	j;
 
-	i = *pos / 100;
-	j = *pos % 100;
-	if (*nbr_try == 0)
+	i = ft_begin_pos(map_cpy) / 100;
+	j = ft_begin_pos(map_cpy) % 100;
+	if (map_cpy[i - 1][j] == '0')
+		map_cpy[i - 1][j] = '2';
+	if (map_cpy[i][j + 1] == '0')
+		map_cpy[i][j + 1] = '2';
+	if (map_cpy[i + 1][j] == '0')
+		map_cpy[i + 1][j] = '2';
+	if (map_cpy[i][j - 1] == '0')
+		map_cpy[i][j - 1] = '2';
+	ft_all_possible_move(map_cpy);
+}
+
+int	ft_is_all_item_collected(char **map, char **map_cpy)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P' || map[i][j] == 'C' || map[i][j] == 'E')
+				if (map_cpy[i][j] != '2')
+					return (false);
+			j++;
+		}
 		i++;
-	else if (*nbr_try == 1)
-		j--;
-	else if (*nbr_try == 2)
-		i--;
-	else if (*nbr_try == 3)
-		j++;
-	*pos = i * 100 + j;
+	}
+	return (true);
 }
