@@ -6,15 +6,32 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:40:27 by jose              #+#    #+#             */
-/*   Updated: 2023/03/06 23:11:50 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/08 18:26:48 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_remove_image(void)
+void	ft_remove_img(t_win *win)
 {
-	return ;
+	t_data_img	*tmp;
+	//t_data_img	*tmp2;
+
+	tmp = win->lst;
+	while (tmp->img->id != SPACIALSHIP)
+		tmp = tmp->next;
+	//tmp2 = 
+	mlx_destroy_image(win->mlx, tmp->img->img);
+	tmp->img->img = mlx_xpm_file_to_image(win->mlx, \
+	"/home/jose/C/so_long/image/fusee_sf.xpm", &tmp->img->width, &tmp->img->height);
+	//tmp->img->id = SPACIALSHIP;
+	tmp->img->addr = mlx_get_data_addr(tmp->img->img, &tmp->img->bpp, \
+	&tmp->img->size_line, &tmp->img->endian);
+	/*free(tmp->img);
+	free(tmp);*/
+	
+	//ft_add_image(win, "/home/jose/C/so_long/image/fusee_sf.xpm", SPACIALSHIP);
+	ft_remove_all_backgroud(win);
 }
 
 void	ft_add_image(t_win *win, char *path, int id)

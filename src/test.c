@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:43:27 by jose              #+#    #+#             */
-/*   Updated: 2023/02/23 16:44:28 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/08 13:33:35 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int key_hook(int keycode, t_data *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		exit(0);
 	}
+	else
+		ft_printf("%d\n", keycode);
 	return (0);
 }
 

@@ -6,23 +6,37 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:14:51 by jose              #+#    #+#             */
-/*   Updated: 2023/03/08 13:17:04 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/08 18:50:55 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*ft_initial_window(char **map)
+static void	ft_open_ber_file(t_win *win, char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDWR, 0644);
+	if (fd == -1)
+		ft_error(OPEN_FAILED, "open failed");
+	win->map = ft_valide_map(fd);
+	close(fd);
+	if (!win->map)
+		(free(win), ft_error(MAP_NOT_VALID, "map not valid"));
+}
+
+void	*ft_initial_window(char *path)
 {
 	t_win	*win;
 	int		win_w;
 	int		win_h;
 
-	win_w = ft_strlen(map[0]);
-	win_h = ft_nbr_str(map);
 	win = malloc(sizeof(*win));
 	if (!win)
 		return (ft_error(MALLOC_FAILED, "malloc_window"), NULL);
+	ft_open_ber_file(win, path);
+	win_w = ft_strlen(win->map[0]);
+	win_h = ft_nbr_str(win->map);
 	win->mlx = mlx_init();
 	if (!win->mlx)
 		(ft_error(MLX_INIT_FAILED, "mlx_init"));
@@ -30,34 +44,36 @@ void	*ft_initial_window(char **map)
 	win_h * SQ, "SO_LONG");
 	if (!win->mlx_win)
 		(ft_free_window(win), ft_error(MLX_WIN_FAILED, "mlx_win"));
+	win->move = "MOVE : 0";
 	win->lst = NULL;
 	ft_add_all_image(win);
 	return (win);
 }
 
-void	ft_put_image_manager(t_win *win, char **map)
+void	ft_put_image_manager(t_win *win)
 {
 	int		i;
 	int		j;
 	void	*res;
 
 	i = 0;
-	while (map[i])
+	while (win->map[i])
 	{
 		j = 0;
 		if (!i && !j)
 			mlx_put_image_to_window(win->mlx, win->mlx_win, \
 			win->lst->img->img, j * SQ, i * SQ);
-		while (map[i][j])
+		while (win->map[i][j])
 		{
-			res = ft_get_img(win->lst, map[i][j]);
-			if (map[i][j] != '0')
+			res = ft_get_img(win->lst, win->map[i][j]);
+			if (win->map[i][j] != '0' && res)
 				mlx_put_image_to_window(win->mlx, win->mlx_win, \
 				res, j * SQ, i * SQ);
 			j++;
 		}
 		i++;
 	}
+	mlx_string_put(win->mlx, win->mlx_win, SQ, SQ, 0xFFFFFF, win->move);
 }
 
 void	*ft_get_img(t_data_img *lst, int id)
