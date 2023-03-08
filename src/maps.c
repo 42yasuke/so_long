@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:04:39 by jose              #+#    #+#             */
-/*   Updated: 2023/03/05 12:56:52 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/06 22:45:05 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,9 @@ char	**ft_valide_map(int fd)
 
 	map = ft_valide_map2(fd);
 	if (!map)
+		return (NULL);
+	if (ft_strlen(map[0]) > WINDOW_WIDTH_MAX || \
+	ft_nbr_str(map) > WINDOW_HEIGHT_MAX)
 		return (NULL);
 	if (ft_is_rectangle(map) && ft_is_closed(map) && \
 	ft_valide_item(map) && ft_valide_path(map))

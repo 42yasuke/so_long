@@ -6,70 +6,70 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:14:51 by jose              #+#    #+#             */
-/*   Updated: 2023/03/05 13:13:33 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/08 13:17:04 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_remove_image(void)
-{
-	return ;
-}
-
-void	ft_add_image(t_win *win, char *path, int id)
-{
-	t_data_img *tmp;
-
-	tmp = win->lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = malloc(sizeof(*tmp));
-	if (!tmp->next)
-		(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc_failed"));
-	tmp = tmp->next;
-	tmp->next = NULL;
-	tmp->img = malloc(sizeof(*(tmp->img)));
-	if (!tmp->img)
-		(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc_failed"));
-	tmp->img->img = mlx_xpm_file_to_image(win->mlx, path, &tmp->img->width, &tmp->img->height);
-	tmp->img->id = id;
-	tmp->img->addr = mlx_get_data_addr(tmp->img->img, &tmp->img->bpp, &tmp->img->size_line, &tmp->img->endian);
-}
-
-void	ft_add_all_image(t_win *win)
-{
-	if (!win->lst)
-	{
-		win->lst = malloc(sizeof(*(win->lst)));
-		if (!win->lst)
-			(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc_failed"));
-		win->lst->next = NULL;
-		win->lst->img = malloc(sizeof(*(win->lst->img)));
-		if (!win->lst->img)
-			(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc_failed"));
-		win->lst->img->img = mlx_xpm_file_to_image(win->mlx, "/home/jose/C/so_long/image/space.xpm", &win->lst->img->width, &win->lst->img->height);
-		win->lst->img->addr = mlx_get_data_addr(win->lst->img->img, &win->lst->img->bpp, &win->lst->img->size_line, &win->lst->img->endian);
-		win->lst->img->id = BACKGROUND;
-	}
-	else
-		(void)win;
-}
-
-void	*ft_initial_window(void)
+void	*ft_initial_window(char **map)
 {
 	t_win	*win;
+	int		win_w;
+	int		win_h;
 
+	win_w = ft_strlen(map[0]);
+	win_h = ft_nbr_str(map);
 	win = malloc(sizeof(*win));
 	if (!win)
 		return (ft_error(MALLOC_FAILED, "malloc_window"), NULL);
 	win->mlx = mlx_init();
 	if (!win->mlx)
 		(ft_error(MLX_INIT_FAILED, "mlx_init"));
-	win->mlx_win = mlx_new_window(win->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "SO_LONG");
+	win->mlx_win = mlx_new_window(win->mlx, win_w * SQ, \
+	win_h * SQ, "SO_LONG");
 	if (!win->mlx_win)
 		(ft_free_window(win), ft_error(MLX_WIN_FAILED, "mlx_win"));
 	win->lst = NULL;
 	ft_add_all_image(win);
 	return (win);
+}
+
+void	ft_put_image_manager(t_win *win, char **map)
+{
+	int		i;
+	int		j;
+	void	*res;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		if (!i && !j)
+			mlx_put_image_to_window(win->mlx, win->mlx_win, \
+			win->lst->img->img, j * SQ, i * SQ);
+		while (map[i][j])
+		{
+			res = ft_get_img(win->lst, map[i][j]);
+			if (map[i][j] != '0')
+				mlx_put_image_to_window(win->mlx, win->mlx_win, \
+				res, j * SQ, i * SQ);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	*ft_get_img(t_data_img *lst, int id)
+{
+	t_data_img	*tmp;
+
+	tmp = lst;
+	while (tmp)
+	{
+		if (tmp->img->id == id)
+			return (tmp->img->img);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/05 14:53:07 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/08 13:22:40 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 # include <stdbool.h>
 
 /*	window's macro	*/
-# define WINDOW_WIDTH 1431
-# define WINDOW_HEIGHT 780
+# define WINDOW_WIDTH_MAX 30
+# define WINDOW_HEIGHT_MAX 15
+# define SQ 50
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -46,11 +47,11 @@
 
 /*	image's macro	*/
 # define BACKGROUND 0
-# define SPACIALSHIP 1
+# define SPACIALSHIP 80
 # define ENEMY 2
-# define EXIT 3
-# define OBSTACLE 4
-# define ITEM 5
+# define EXIT 69
+# define OBSTACLE 49
+# define ITEM 67
 
 typedef struct	s_image
 {
@@ -86,12 +87,24 @@ int	ft_close_win(t_win *window);
 int		ft_event_manager(int keycode, t_win *window);
 
 /*	utils.c	*/
-void	*ft_initial_window(void);
+void	*ft_initial_window(char **map);
+void	ft_put_image_manager(t_win *win, char **map)
+void	*ft_get_img(t_data_img *lst, int id);
 
 /*	free.c	*/
 void	ft_free_all_image(void *mlx, t_data_img *lst);
 void	ft_free_window(t_win *window);
 void	ft_free_all_str(char **map);
+
+/*	image.c	*/
+void	ft_remove_image(void);
+void	ft_add_image(t_win *win, char *path, int id);
+void	ft_add_all_image(t_win *win);
+void	ft_add_background(t_win *win);
+void	ft_remove_all_backgroud(t_win *win);
+
+/*	image_utils.c	*/
+void	ft_remove_backgroud(t_image *img, t_image *img_cpy);
 
 /*	maps.c	*/
 char	**ft_valide_map(int fd);
