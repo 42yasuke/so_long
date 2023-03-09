@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 16:36:37 by jose              #+#    #+#             */
-/*   Updated: 2023/03/09 01:19:03 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 15:19:07 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ void	ft_remove_backgroud(t_image *img, t_image *img_b)
 	}
 }
 
+static void	ft_screened_reset(t_win *win)
+{
+	t_data_img	*tmp;
+
+	tmp = win->lst;
+	while (tmp)
+	{
+		if (tmp->img->id == ITEM)
+			tmp->img->screened = 0;
+		tmp = tmp->next;
+	}
+}
+
 void	ft_screened_item(t_win *win)
 {
 	t_data_img	*tmp;
@@ -48,15 +61,11 @@ void	ft_screened_item(t_win *win)
 		tmp = tmp->next;
 	}
 	if (tmp)
-		tmp->img->screened = 1;
-	else
 	{
-		tmp = win->lst;
-		while (tmp)
-		{
-			if (tmp->img->id == ITEM)
-				tmp->img->screened = 0;
-			tmp = tmp->next;
-		}
+		tmp->img->screened = 1;
+		if (tmp->next && tmp->next->img->id != ITEM)
+			ft_screened_reset(win);
 	}
+	else
+		ft_screened_reset(win);
 }

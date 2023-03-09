@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/03/08 18:59:53 by jose             ###   ########.fr        #
+#    Updated: 2023/03/09 18:00:13 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ C_FILES =	main.c \
 			events.c \
 			events_utils.c \
 			events_utils2.c \
+			events_utils3.c \
 			utils.c \
 			free.c \
 			maps.c \

@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:23:42 by jose              #+#    #+#             */
-/*   Updated: 2023/03/09 01:54:24 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 18:41:02 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,14 @@ static int	ft_move_forward(t_win *win, char *tmp_bf, char *tmp_af)
 	{
 		*tmp_af = *tmp_bf;
 		*tmp_bf = win->map[i - 1][j];
-		win->map[i - 1][j] = 'P';
-		win->map[i][j] = *tmp_af;
+		if (win->map[i - 1][j] != 'N')
+			win->map[i - 1][j] = 'P';
+		else
+			win->map[i - 1][j] = 'L';
+		if (*tmp_af == 'C')
+			win->map[i][j] = '0';
+		else
+			win->map[i][j] = *tmp_af;
 		res = 1;
 	}
 	return (res);
@@ -45,8 +51,14 @@ static int	ft_move_left(t_win *win, char *tmp_bf, char *tmp_af)
 	{
 		*tmp_af = *tmp_bf;
 		*tmp_bf = win->map[i][j - 1];
-		win->map[i][j - 1] = 'P';
-		win->map[i][j] = *tmp_af;
+		if (win->map[i][j - 1] != 'N')
+			win->map[i][j - 1] = 'P';
+		else
+			win->map[i][j - 1] = 'L';
+		if (*tmp_af == 'C')
+			win->map[i][j] = '0';
+		else
+			win->map[i][j] = *tmp_af;
 		res = 1;
 	}
 	return (res);
@@ -65,8 +77,14 @@ static int	ft_move_right(t_win *win, char *tmp_bf, char *tmp_af)
 	{
 		*tmp_af = *tmp_bf;
 		*tmp_bf = win->map[i][j + 1];
-		win->map[i][j + 1] = 'P';
-		win->map[i][j] = *tmp_af;
+		if (win->map[i][j + 1] != 'N')
+			win->map[i][j + 1] = 'P';
+		else
+			win->map[i][j + 1] = 'L';
+		if (*tmp_af == 'C')
+			win->map[i][j] = '0';
+		else
+			win->map[i][j] = *tmp_af;
 		res = 1;
 	}
 	return (res);
@@ -85,8 +103,14 @@ static int	ft_move_back(t_win *win, char *tmp_bf, char *tmp_af)
 	{
 		*tmp_af = *tmp_bf;
 		*tmp_bf = win->map[i + 1][j];
-		win->map[i + 1][j] = 'P';
-		win->map[i][j] = *tmp_af;
+		if (win->map[i + 1][j] != 'N')
+			win->map[i + 1][j] = 'P';
+		else
+			win->map[i + 1][j] = 'L';
+		if (*tmp_af == 'C')
+			win->map[i][j] = '0';
+		else
+			win->map[i][j] = *tmp_af;
 		res = 1;
 	}
 	return (res);

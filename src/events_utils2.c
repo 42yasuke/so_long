@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:58:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/09 14:54:18 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 18:42:05 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	ft_draw_map(void *win)
 	if (!(is_time % FPS))
 		(ft_put_image_manager((t_win *)win), mlx_do_sync(((t_win *)win)->mlx));
 	is_time++;
+	ft_is_finished(win);
 	return (EXIT_SUCCESS);
 }

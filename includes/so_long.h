@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/09 14:54:10 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 18:41:54 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ void	ft_move_manager(t_win *win, int keycode);
 void	ft_add_move(t_win *win);
 void	ft_screened_item(t_win *win);
 int		ft_draw_map(void *win);
+
+/*	events_utils3.c	*/
+void	ft_is_finished(t_win *win);
 
 /*	utils.c	*/
 void	*ft_initial_window(char *path);
