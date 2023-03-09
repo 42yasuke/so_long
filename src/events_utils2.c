@@ -6,36 +6,48 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:58:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/08 19:42:25 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 14:54:18 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static void	ft_cpy(char	*s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s2[i])
+	{
+		s1[i] = s2[i];
+		i++;
+	}
+}
+
 void	ft_add_move(t_win *win)
 {
 	int			nbr;
 	char		*str;
-	static char	*str2 = "MOVE : ";
-	int			i;
 
-	i = 0;
 	nbr = ft_atoi(win->move + 7);
 	nbr++;
 	str = ft_itoa(nbr);
-	win->move = malloc(sizeof(*str) * (ft_strlen(str2) + ft_strlen(str) + 1));
+	free((win->move));
+	win->move = malloc(sizeof(*str) * (7 + ft_strlen(str) + 1));
 	if (!win->move)
 		ft_error(MALLOC_FAILED, "malloc failed");
-	while (str2[i])
-	{
-		win->move[i] = str2[i];
-		i++;
-	}
-	while (*str)
-	{
-		win->move[i] = *str;
-		i++;
-		str++;
-	}
-	win->move[i] = '\0';
+	ft_cpy(win->move, "MOVE : ");
+	ft_cpy(win->move + 7, str);
+	win->move[7 + ft_strlen(str)] = '\0';
+	free(str);
+}
+
+int	ft_draw_map(void *win)
+{
+	static int	is_time = 0;
+	
+	if (!(is_time % FPS))
+		(ft_put_image_manager((t_win *)win), mlx_do_sync(((t_win *)win)->mlx));
+	is_time++;
+	return (EXIT_SUCCESS);
 }

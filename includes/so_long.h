@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/08 18:59:32 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 14:54:10 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define WINDOW_WIDTH_MAX 30
 # define WINDOW_HEIGHT_MAX 15
 # define SQ 50
+# define FPS 2000
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -63,6 +64,7 @@ typedef struct	s_image
 	int		width;
 	int		height;
 	int		id;
+	int		screened;
 }	t_image;
 
 typedef struct	s_data_image
@@ -93,6 +95,8 @@ void	ft_move_manager(t_win *win, int keycode);
 
 /*	events_utils2.c	*/
 void	ft_add_move(t_win *win);
+void	ft_screened_item(t_win *win);
+int		ft_draw_map(void *win);
 
 /*	utils.c	*/
 void	*ft_initial_window(char *path);

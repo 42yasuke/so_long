@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:14:51 by jose              #+#    #+#             */
-/*   Updated: 2023/03/08 18:50:55 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 14:22:01 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*ft_initial_window(char *path)
 	win_h * SQ, "SO_LONG");
 	if (!win->mlx_win)
 		(ft_free_window(win), ft_error(MLX_WIN_FAILED, "mlx_win"));
-	win->move = "MOVE : 0";
+	win->move = ft_strdup("MOVE : 0");
 	win->lst = NULL;
 	ft_add_all_image(win);
 	return (win);
@@ -74,6 +74,7 @@ void	ft_put_image_manager(t_win *win)
 		i++;
 	}
 	mlx_string_put(win->mlx, win->mlx_win, SQ, SQ, 0xFFFFFF, win->move);
+	ft_screened_item(win);
 }
 
 void	*ft_get_img(t_data_img *lst, int id)
@@ -83,7 +84,7 @@ void	*ft_get_img(t_data_img *lst, int id)
 	tmp = lst;
 	while (tmp)
 	{
-		if (tmp->img->id == id)
+		if (tmp->img->id == id && !tmp->img->screened)
 			return (tmp->img->img);
 		tmp = tmp->next;
 	}

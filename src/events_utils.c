@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:23:42 by jose              #+#    #+#             */
-/*   Updated: 2023/03/08 19:22:05 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 01:54:24 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ static int	ft_move_back(t_win *win, char *tmp_bf, char *tmp_af)
 void	ft_move_manager(t_win *win, int keycode)
 {
 	int			move;
-	char		*tmp;
 	static char	tmp_bf_mv = '0';
 	static char	tmp_af_mv = '0';
 
@@ -109,10 +108,5 @@ void	ft_move_manager(t_win *win, int keycode)
 	if (keycode == KEY_S)
 		move = ft_move_back(win, &tmp_bf_mv, &tmp_af_mv);
 	if (move)
-	{
-		tmp = win->move;
 		ft_add_move(win);
-		if (tmp_bf_mv != '0' && tmp_af_mv != '0')
-			free(tmp);
-	}
 }

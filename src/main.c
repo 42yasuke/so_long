@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:17:16 by jose              #+#    #+#             */
-/*   Updated: 2023/03/08 14:14:33 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 14:54:24 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ void	ft_affiche(char **map)
 	}
 }
 
+/*
+	1.faire tourner les items
+	2.deplacer l'enemie
+	3.tout reafficher avec ft_put_img_manager
+	*/
+
 int	main(int ac, char **av)
 {
 	t_win	*win;
@@ -38,8 +44,8 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		ft_error(BAD_PARAMETERS, "bad parameters");
 	win = ft_initial_window(av[1]);
-	ft_put_image_manager(win);
 
+	mlx_loop_hook(win->mlx, &ft_draw_map, win);
 	mlx_hook(win->mlx_win, KeyPress, KeyPressMask, &ft_event_manager, win);
 	mlx_hook(win->mlx_win, ClientMessage, StructureNotifyMask, &ft_close_win, win);
 
