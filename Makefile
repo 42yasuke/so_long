@@ -6,7 +6,7 @@
 #    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/03/10 01:18:33 by jose             ###   ########.fr        #
+#    Updated: 2023/03/10 16:44:57 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ C_FILES =	main.c \
 			maps_utils2.c \
 			image.c \
 			image_utils.c \
-			enemy.c
+			enemy.c \
+			enemy_utils.c
 
 SRC = $(addprefix src/, $(C_FILES))
 

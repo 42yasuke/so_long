@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:03:33 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 01:01:28 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 16:35:27 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static int	ft_all_item_col(t_win *win)
 		i++;
 	}
 	return (true);
-
 }
 
 static int	ft_on_exit(t_win *win)

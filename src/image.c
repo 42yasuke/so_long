@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:40:27 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 02:54:40 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 16:27:53 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_remove_img(t_win *win)
 		tmp = tmp->next;
 	mlx_destroy_image(win->mlx, tmp->img->img);
 	tmp->img->img = mlx_xpm_file_to_image(win->mlx, \
-	"/home/jose/C/so_long/image/fusee_sf.xpm", &tmp->img->width, &tmp->img->height);
+	"/home/jose/C/so_long/image/fusee_sf.xpm", \
+	&tmp->img->width, &tmp->img->height);
 	tmp->img->addr = mlx_get_data_addr(tmp->img->img, &tmp->img->bpp, \
 	&tmp->img->size_line, &tmp->img->endian);
 	ft_remove_all_backgroud(win);
