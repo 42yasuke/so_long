@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:40:27 by jose              #+#    #+#             */
-/*   Updated: 2023/03/09 01:08:01 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 19:27:25 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_add_all_image(t_win *win)
 	ft_add_image(win, "/home/jose/C/so_long/image/it6.xpm", ITEM);
 	ft_add_image(win, "/home/jose/C/so_long/image/exit_sf.xpm", EXIT);
 	ft_add_image(win, "/home/jose/C/so_long/image/fusee_sf.xpm", SPACIALSHIP);
+	ft_add_image(win, "/home/jose/C/so_long/image/ennemi_sf.xpm", ENEMY);
 	ft_remove_all_backgroud(win);
 }
 

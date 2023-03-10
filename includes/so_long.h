@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/09 18:41:54 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/09 19:50:57 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define WINDOW_WIDTH_MAX 30
 # define WINDOW_HEIGHT_MAX 15
 # define SQ 50
-# define FPS 2000
+# define FPS 3000
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -49,7 +49,7 @@
 /*	image's macro	*/
 # define BACKGROUND 0
 # define SPACIALSHIP 80
-# define ENEMY 2
+# define ENEMY 78
 # define EXIT 69
 # define OBSTACLE 49
 # define ITEM 67
