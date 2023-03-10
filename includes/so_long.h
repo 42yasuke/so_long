@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/09 19:50:57 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 02:23:53 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,14 @@
 # define WINDOW_WIDTH_MAX 30
 # define WINDOW_HEIGHT_MAX 15
 # define SQ 50
-# define FPS 3000
+# define FPS 2000
+# define FPS_ENEMY 3000
+
+/*	enemy's move macro	*/
+# define NORTH 1
+# define EAST 2
+# define SOUTH 3
+# define WEST 4
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
@@ -134,5 +141,8 @@ char	**ft_copy_map(char **map);
 /*	maps_utils2.c	*/
 void	ft_first_move(char **map_cpy);
 int		ft_is_all_item_collected(char **map, char **map_cpy);
+
+/*	enemy.c	*/
+void	ft_move_enemy(t_win *win);
 
 #endif

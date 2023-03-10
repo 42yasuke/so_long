@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:58:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 01:07:25 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 02:26:04 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	ft_add_move(t_win *win)
 int	ft_draw_map(void *win)
 {
 	static int	is_time = 0;
-	
+
+	if (!(is_time % FPS_ENEMY))
+		ft_move_enemy(win);
 	if (!(is_time % FPS))
 		(ft_put_image_manager((t_win *)win), mlx_do_sync(((t_win *)win)->mlx));
 	is_time++;
