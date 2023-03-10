@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 16:48:33 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 18:48:23 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 # define OBSTACLE 49
 # define ITEM 67
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void	*img;
 	char	*addr;
@@ -74,14 +74,13 @@ typedef struct	s_image
 	int		screened;
 }	t_image;
 
-typedef struct	s_data_image
+typedef struct s_data_image
 {
 	struct s_image		*img;
 	struct s_data_image	*next;
 }	t_data_img;
 
-
-typedef struct	s_win
+typedef struct s_win
 {
 	void		*mlx;
 	void		*mlx_win;

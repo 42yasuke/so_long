@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:04:39 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 17:54:50 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 16:16:20 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	ft_valide_item(char **map)
 				exit++;
 			else if (map[i][j] == 'P')
 				begin++;
-			else if (map[i][j] != '0' && map[i][j] != '1')
+			else if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'N')
 				return (false);
 			j++;
 		}
