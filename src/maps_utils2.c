@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:35:42 by jose              #+#    #+#             */
-/*   Updated: 2023/03/06 23:09:26 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 15:49:16 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,26 @@ int	ft_is_all_item_collected(char **map, char **map_cpy)
 		i++;
 	}
 	return (true);
+}
+
+int	ft_valide_nbr_enemy(char **map)
+{
+	int	i;
+	int	j;
+	int	nbr_enemy;
+
+	i = 0;
+	nbr_enemy = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'N')
+				nbr_enemy++;
+			j++;
+		}
+		i++;
+	}
+	return (nbr_enemy < 2);
 }

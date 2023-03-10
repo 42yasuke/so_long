@@ -6,7 +6,7 @@
 /*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 02:23:53 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/10 15:45:23 by jose             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ char	**ft_copy_map(char **map);
 /*	maps_utils2.c	*/
 void	ft_first_move(char **map_cpy);
 int		ft_is_all_item_collected(char **map, char **map_cpy);
+int		ft_valide_nbr_enemy(char **map);
 
 /*	enemy.c	*/
 void	ft_move_enemy(t_win *win);
