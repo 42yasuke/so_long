@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:40:27 by jose              #+#    #+#             */
-/*   Updated: 2023/03/20 17:18:12 by jralph           ###   ########.fr       */
+/*   Updated: 2023/03/20 21:00:18 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,26 @@ void	ft_add_all_image(t_win *win)
 {
 	if (!win->lst)
 		ft_add_background(win);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/asteroid_sf.xpm", OBSTACLE);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/it1.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/it2.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/it3.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/it4.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/it5.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/it6.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/exit_sf.xpm", EXIT);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/fusee_sf.xpm", SPACIALSHIP);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/ennemi_sf.xpm", ENEMY);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	asteroid_sf.xpm", OBSTACLE);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	it1.xpm", ITEM);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	it2.xpm", ITEM);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	it3.xpm", ITEM);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	it4.xpm", ITEM);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	it5.xpm", ITEM);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	it6.xpm", ITEM);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	exit_sf.xpm", EXIT);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	fusee_sf.xpm", SPACIALSHIP);
+	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
+	ennemi_sf.xpm", ENEMY);
 	ft_remove_all_backgroud(win);
 }
 
