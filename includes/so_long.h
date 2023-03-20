@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 18:48:23 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/20 19:52:17 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define WINDOW_WIDTH_MAX 30
 # define WINDOW_HEIGHT_MAX 15
 # define SQ 50
-# define FPS 2000
-# define FPS_ENEMY 3000
+# define FPS 6000
+# define FPS_ENEMY 18000
 
 /*	enemy's move macro	*/
 # define NORTH 1
@@ -37,8 +37,8 @@
 
 /*	keybord's macro	*/
 # define KEY_ESC 65307
-# define KEY_Z 122
-# define KEY_Q 113
+# define KEY_Z 119
+# define KEY_Q 97
 # define KEY_D 100
 # define KEY_S 115
 
@@ -141,6 +141,9 @@ char	**ft_copy_map(char **map);
 void	ft_first_move(char **map_cpy);
 int		ft_is_all_item_collected(char **map, char **map_cpy);
 int		ft_valide_nbr_enemy(char **map);
+
+/*	maps_utils3.c	*/
+int		ft_too_much_bn(char *str);
 
 /*	enemy.c	*/
 void	ft_move_enemy(t_win *win);

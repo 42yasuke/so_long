@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maps_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:23:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 18:19:04 by jose             ###   ########.fr       */
+/*   Updated: 2023/03/20 19:38:44 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	**ft_valide_map2(int fd)
 		tmp = get_next_line(fd);
 	}
 	if (!str)
+		return (NULL);
+	if (ft_too_much_bn(str))
 		return (NULL);
 	map = ft_split(str, '\n');
 	free(str);

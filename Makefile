@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/03/10 18:44:02 by jose             ###   ########.fr        #
+#    Updated: 2023/03/20 19:39:18 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ C_FILES =	main.c \
 			maps.c \
 			maps_utils.c \
 			maps_utils2.c \
+			maps_utils3.c \
 			image.c \
 			image_utils.c \
 			enemy.c \
@@ -45,6 +46,7 @@ C_FILES_BONUS =	main_bonus.c \
 				maps_bonus.c \
 				maps_utils_bonus.c \
 				maps_utils2_bonus.c \
+				maps_utils3_bonus.c \
 				image_bonus.c \
 				image_utils_bonus.c \
 				enemy_bonus.c \
