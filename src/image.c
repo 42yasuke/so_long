@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:40:27 by jose              #+#    #+#             */
-/*   Updated: 2023/03/20 21:00:18 by jralph           ###   ########.fr       */
+/*   Updated: 2023/03/30 18:14:56 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	ft_remove_img(t_win *win)
 		tmp = tmp->next;
 	mlx_destroy_image(win->mlx, tmp->img->img);
 	tmp->img->img = mlx_xpm_file_to_image(win->mlx, \
-	"/mnt/nfs/homes/jralph/Desktop/so_long/image/fusee_sf.xpm", \
-	&tmp->img->width, &tmp->img->height);
+	"image/fusee_sf.xpm", &tmp->img->width, &tmp->img->height);
 	tmp->img->addr = mlx_get_data_addr(tmp->img->img, &tmp->img->bpp, \
 	&tmp->img->size_line, &tmp->img->endian);
 	ft_remove_all_backgroud(win);
@@ -55,26 +54,16 @@ void	ft_add_all_image(t_win *win)
 {
 	if (!win->lst)
 		ft_add_background(win);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	asteroid_sf.xpm", OBSTACLE);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	it1.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	it2.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	it3.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	it4.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	it5.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	it6.xpm", ITEM);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	exit_sf.xpm", EXIT);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	fusee_sf.xpm", SPACIALSHIP);
-	ft_add_image(win, "/mnt/nfs/homes/jralph/Desktop/so_long/image/\
-	ennemi_sf.xpm", ENEMY);
+	ft_add_image(win, "image/asteroid_sf.xpm", OBSTACLE);
+	ft_add_image(win, "image/it1.xpm", ITEM);
+	ft_add_image(win, "image/it2.xpm", ITEM);
+	ft_add_image(win, "image/it3.xpm", ITEM);
+	ft_add_image(win, "image/it4.xpm", ITEM);
+	ft_add_image(win, "image/it5.xpm", ITEM);
+	ft_add_image(win, "image/it6.xpm", ITEM);
+	ft_add_image(win, "image/exit_sf.xpm", EXIT);
+	ft_add_image(win, "image/fusee_sf.xpm", SPACIALSHIP);
+	ft_add_image(win, "image/ennemi_sf.xpm", ENEMY);
 	ft_remove_all_backgroud(win);
 }
 
@@ -88,8 +77,7 @@ void	ft_add_background(t_win *win)
 	if (!win->lst->img)
 		(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc_failed"));
 	win->lst->img->img = mlx_xpm_file_to_image(win->mlx, \
-	"/mnt/nfs/homes/jralph/Desktop/so_long/image/noir.xpm", \
-	&win->lst->img->width, &win->lst->img->height);
+	"image/noir.xpm", &win->lst->img->width, &win->lst->img->height);
 	win->lst->img->addr = mlx_get_data_addr(win->lst->img->img, \
 	&win->lst->img->bpp, &win->lst->img->size_line, &win->lst->img->endian);
 	win->lst->img->id = BACKGROUND;
