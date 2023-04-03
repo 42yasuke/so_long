@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/03/20 19:52:17 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/03 13:38:01 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define MLX_WIN_FAILED 4
 # define OPEN_FAILED 5
 # define MAP_NOT_VALID 6
+# define BAD_EXTENSION 7
 
 /*	image's macro	*/
 # define BACKGROUND 0
@@ -144,6 +145,7 @@ int		ft_valide_nbr_enemy(char **map);
 
 /*	maps_utils3.c	*/
 int		ft_too_much_bn(char *str);
+int		ft_good_extension(char *str_file);
 
 /*	enemy.c	*/
 void	ft_move_enemy(t_win *win);
