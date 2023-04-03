@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:40:27 by jose              #+#    #+#             */
-/*   Updated: 2023/03/30 18:14:56 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/03 17:11:27 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_add_image(t_win *win, char *path, int id)
 	&tmp->img->width, &tmp->img->height);
 	tmp->img->id = id;
 	tmp->img->screened = 0;
+	tmp->img->addr = NULL;
 	tmp->img->addr = mlx_get_data_addr(tmp->img->img, &tmp->img->bpp, \
 	&tmp->img->size_line, &tmp->img->endian);
 }

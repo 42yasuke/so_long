@@ -6,7 +6,7 @@
 #    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/03/20 19:39:18 by jralph           ###   ########.fr        #
+#    Updated: 2023/04/03 17:25:46 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,8 @@ MLBX = libmlx.a -Iinclude -ldl -lglfw -pthread -lm -lmlx -lXext -lX11
 
 NAME = so_long
 
+SLB = so_long_bonus
+
 all : $(NAME)
 
 libft.a :
@@ -80,10 +82,12 @@ libmlx.a :
 			$(CC) $(CFLAGS_OBJ) $< -o $@ $(LIB) $(MLBX) $(INC)
 
 $(NAME) : libft.a libmlx.a $(OBJ)
-			$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIB) $(MLBX)
+				$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIB) $(MLBX)
 
-bonus : libft.a libmlx.a $(OBJ_BONUS)
-			$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME) $(LIB) $(MLBX)
+bonus : $(SLB)
+
+so_long_bonus : libft.a libmlx.a $(OBJ_BONUS)
+			$(CC) $(CFLAGS) $(OBJ_BONUS) -o $@ $(LIB) $(MLBX)
 clean :
 		make clean -C libft
 		make clean -C mlx42
@@ -91,7 +95,7 @@ clean :
 		$(RM) bonus/*.o
 
 fclean : clean
-		$(RM) $(NAME) libft.a libmlx.a
+		$(RM) $(NAME) $(SLB) libft.a libmlx.a
 
 re : fclean all
 

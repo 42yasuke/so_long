@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 14:48:22 by jralph            #+#    #+#             */
-/*   Updated: 2023/04/03 12:09:03 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/03 17:01:32 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_error(int err, char *err_msg)
 	if (err == MAP_NOT_VALID)
 		ft_printf("Error: %s\n", err_msg);
 	if (err == BAD_EXTENSION)
+		ft_printf("Error: %s\n", err_msg);
+	if (err == IMAGE_NOT_FOUND)
 		ft_printf("Error: %s\n", err_msg);
 	exit(EXIT_FAILURE);
 }

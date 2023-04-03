@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:23:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/20 18:14:04 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/03 16:56:36 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_valide_map2(int fd)
 	if (!str)
 		return (NULL);
 	if (ft_too_much_bn(str))
-		return (NULL);
+		return (free(str), NULL);
 	map = ft_split(str, '\n');
 	free(str);
 	if (!map)
