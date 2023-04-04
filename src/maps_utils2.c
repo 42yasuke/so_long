@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maps_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:35:42 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 15:49:16 by jose             ###   ########.fr       */
+/*   Updated: 2023/04/04 06:58:17 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,7 @@ void	ft_first_move(char **map_cpy)
 
 	i = ft_begin_pos(map_cpy) / 100;
 	j = ft_begin_pos(map_cpy) % 100;
-	if (map_cpy[i - 1][j] == '0')
-		map_cpy[i - 1][j] = '2';
-	if (map_cpy[i][j + 1] == '0')
-		map_cpy[i][j + 1] = '2';
-	if (map_cpy[i + 1][j] == '0')
-		map_cpy[i + 1][j] = '2';
-	if (map_cpy[i][j - 1] == '0')
-		map_cpy[i][j - 1] = '2';
+	map_cpy[i][j] = '2';
 	ft_all_possible_move(map_cpy);
 }
 
