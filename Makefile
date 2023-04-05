@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
+#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/04/04 04:07:49 by jralph           ###   ########.fr        #
+#    Updated: 2023/04/05 23:23:54 by jose             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,13 +81,19 @@ libmlx.a :
 %.o : %.c
 			$(CC) $(CFLAGS_OBJ) $< -o $@ $(LIB) $(MLBX) $(INC)
 
-$(NAME) : libft.a libmlx.a $(OBJ)
-				$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIB) $(MLBX)
+$(NAME) : .mandatory
 
-bonus : $(SLB)
+.mandatory : libft.a libmlx.a $(OBJ)
+				$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB) $(MLBX)
+				touch .mandatory
+				rm -f .bonus
 
-so_long_bonus : libft.a libmlx.a $(OBJ_BONUS)
-			$(CC) $(CFLAGS) $(OBJ_BONUS) -o $@ $(LIB) $(MLBX)
+bonus : .bonus
+
+.bonus : libft.a libmlx.a $(OBJ_BONUS)
+			$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME) $(LIB) $(MLBX)
+			touch .bonus
+			rm -f .mandatory
 clean :
 		make clean -C libft
 		make clean -C mlx42
@@ -95,7 +101,7 @@ clean :
 		$(RM) bonus/*.o
 
 fclean : clean
-		$(RM) $(NAME) $(SLB) libft.a libmlx.a
+		$(RM) $(NAME) $(SLB) libft.a libmlx.a .mandatory .bonus
 
 re : fclean all
 
