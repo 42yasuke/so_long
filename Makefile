@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jose <jose@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jralph <jralph@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 17:43:43 by jose              #+#    #+#              #
-#    Updated: 2023/04/05 23:23:54 by jose             ###   ########.fr        #
+#    Updated: 2023/04/06 14:04:53 by jralph           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -68,8 +68,6 @@ MLBX = libmlx.a -Iinclude -ldl -lglfw -pthread -lm -lmlx -lXext -lX11
 
 NAME = so_long
 
-SLB = so_long_bonus
-
 all : $(NAME)
 
 libft.a :
@@ -79,7 +77,7 @@ libmlx.a :
 			make -C mlx42
 
 %.o : %.c
-			$(CC) $(CFLAGS_OBJ) $< -o $@ $(LIB) $(MLBX) $(INC)
+			$(CC) $(CFLAGS_OBJ) $< -o $@ $(INC)
 
 $(NAME) : .mandatory
 
