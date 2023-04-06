@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 18:16:28 by jralph            #+#    #+#             */
-/*   Updated: 2023/03/20 19:23:55 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/06 20:29:31 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,21 @@ int	ft_too_much_bn(char *str)
 			return (true);
 		i++;
 	}
+	return (false);
+}
+
+int	ft_good_extension(char *str_file)
+{
+	int	i;
+
+	i = 0;
+	if (ft_strlen(str_file) < 4)
+		return (false);
+	while (str_file[i])
+		i++;
+	i--;
+	if (str_file[i - 3] == '.' && str_file[i - 2] == 'b')
+		if (str_file[i - 1] == 'e' && str_file[i] == 'r')
+			return (true);
 	return (false);
 }

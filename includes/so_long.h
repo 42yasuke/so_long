@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:24:25 by jose              #+#    #+#             */
-/*   Updated: 2023/04/03 16:57:49 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/06 21:04:03 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define OPEN_FAILED 5
 # define MAP_NOT_VALID 6
 # define BAD_EXTENSION 7
-# define IMAGE_NOT_FOUND 8
+# define IMAGE_NOT_F 8
 
 /*	image's macro	*/
 # define BACKGROUND 0
@@ -92,7 +92,7 @@ typedef struct s_win
 }	t_win;
 
 /*	error.c	*/
-void	ft_error(int err, char *err_msg);
+void	ft_error(int err, char *err_msg, t_win *win);
 
 /*	events.c	*/
 int		ft_close_win(t_win *window);
@@ -120,7 +120,6 @@ void	ft_free_window(t_win *window);
 void	ft_free_all_str(char **map);
 
 /*	image.c	*/
-void	ft_remove_img(t_win *win);
 void	ft_add_image(t_win *win, char *path, int id);
 void	ft_add_all_image(t_win *win);
 void	ft_add_background(t_win *win);

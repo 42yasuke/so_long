@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:14:51 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 17:45:19 by jose             ###   ########.fr       */
+/*   Updated: 2023/04/06 20:15:51 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@ static void	ft_open_ber_file(t_win *win, char *path)
 
 	fd = open(path, O_RDWR, 0644);
 	if (fd == -1)
-		ft_error(OPEN_FAILED, "open failed");
+		(free(win), ft_error(OPEN_FAILED, "open failed", NULL));
 	win->map = ft_valide_map(fd);
 	close(fd);
 	if (!win->map)
-		(free(win), ft_error(MAP_NOT_VALID, "map not valid"));
+		(free(win), ft_error(MAP_NOT_VALID, "map not valid", NULL));
+}
+
+static void	ft_init_all(t_win *win)
+{
+	win->lst = NULL;
+	win->map = NULL;
+	win->mlx = NULL;
+	win->mlx_win = NULL;
+	win->move = NULL;
 }
 
 void	*ft_initial_window(char *path)
@@ -33,17 +42,18 @@ void	*ft_initial_window(char *path)
 
 	win = malloc(sizeof(*win));
 	if (!win)
-		return (ft_error(MALLOC_FAILED, "malloc_window"), NULL);
+		return (ft_error(MALLOC_FAILED, "malloc_window", NULL), NULL);
+	ft_init_all(win);
 	ft_open_ber_file(win, path);
 	win_w = ft_strlen(win->map[0]);
 	win_h = ft_nbr_str(win->map);
 	win->mlx = mlx_init();
 	if (!win->mlx)
-		(ft_error(MLX_INIT_FAILED, "mlx_init"));
+		(ft_error(MLX_INIT_FAILED, "mlx_init", win));
 	win->mlx_win = mlx_new_window(win->mlx, win_w * SQ, \
 	win_h * SQ, "SO_LONG");
 	if (!win->mlx_win)
-		(ft_free_window(win), ft_error(MLX_WIN_FAILED, "mlx_win"));
+		(ft_free_window(win), ft_error(MLX_WIN_FAILED, "mlx_win", win));
 	win->move = ft_strdup("MOVE : 0");
 	win->lst = NULL;
 	ft_add_all_image(win);

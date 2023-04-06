@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:58:07 by jose              #+#    #+#             */
-/*   Updated: 2023/04/06 15:57:08 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/06 20:11:29 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_add_move(t_win *win)
 	free((win->move));
 	win->move = malloc(sizeof(*str) * (7 + ft_strlen(str) + 1));
 	if (!win->move)
-		ft_error(MALLOC_FAILED, "malloc failed");
+		(ft_free_window(win), ft_error(MALLOC_FAILED, "malloc failed", win));
 	ft_cpy(win->move, "MOVE : ");
 	ft_cpy(win->move + 7, str);
 	win->move[7 + ft_strlen(str)] = '\0';

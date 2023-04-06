@@ -6,7 +6,7 @@
 /*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:04:39 by jose              #+#    #+#             */
-/*   Updated: 2023/04/04 06:59:54 by jralph           ###   ########.fr       */
+/*   Updated: 2023/04/06 19:30:36 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	**ft_valide_map(int fd)
 		return (NULL);
 	if (ft_strlen(map[0]) > WINDOW_WIDTH_MAX || \
 	ft_nbr_str(map) > WINDOW_HEIGHT_MAX)
-		return (NULL);
+		return (ft_free_all_str(map), NULL);
 	if (ft_is_rectangle(map) && ft_is_closed(map) && \
 	ft_valide_item(map) && ft_valide_path(map))
 		if (ft_valide_nbr_enemy(map))
