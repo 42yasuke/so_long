@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jose <jose@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jralph <jralph@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:58:07 by jose              #+#    #+#             */
-/*   Updated: 2023/03/10 17:53:48 by jose             ###   ########.fr       */
+/*   Updated: 2023/04/06 15:54:56 by jralph           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_draw_map(void *win)
 	if (!(is_time % FPS))
 		(ft_put_image_manager((t_win *)win), mlx_do_sync(((t_win *)win)->mlx));
 	is_time++;
+	if (is_time == INT_MAX)
+		is_time = 0;
 	if (((t_win *)win)->move)
 		ft_is_finished(win);
 	return (EXIT_SUCCESS);
